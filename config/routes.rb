@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'finders/finder'
   devise_for :users
   
   resources :users,only: [:show,:index,:edit,:update] do
@@ -14,4 +15,5 @@ Rails.application.routes.draw do
    resources :relationships, only: [:create, :destroy]
   root 'homes#top'
   get 'home/about' => 'homes#about'
+  get "finder" => "finders#finder"
 end

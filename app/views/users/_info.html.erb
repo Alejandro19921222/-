@@ -8,6 +8,26 @@
 	  <th>introduction</th>
 	  <th><%= user.introduction %></th>
   </tr>
+  <tr>
+    <th><% user ||= current_user %>
+        <a href="<%= following_user_path(user) %>">
+        <strong id="following" class="stat">
+        <%= user.following.count %>
+        </strong>
+        following
+          </a></th>
+    <th><a href="<%= followers_user_path(user) %>">
+        <strong id="followers" class="stat">
+        <%= user.followers.count %>
+        </strong>
+        followers</a>
+      </th>
+  </tr>
+  
+  <tr>
+    <th></th>
+    <th><p><%= render "users/follow_form", user: user %></p></th>
+  </tr>
 </table>
 
 <div class='row'>

@@ -1,2 +1,41 @@
-<h1>Finders#finder</h1>
-<p>Find me in app/views/finders/finder.html.erb</p>
+<% if @range == "User" %>
+ <strong><%= "User search for \"" + @search + "\"" %></strong>
+ <table class='table'>
+     <thead>
+      <tr>
+       <th></th>
+       <th>name</th>
+       <th>introduction</th>
+      </tr>
+     </thead>
+     <tbody>
+      <% @users.each do |user| %>
+       <tr>
+        <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
+        <td><%= user.name %></td>
+        <td><%= user.introduction %></td>
+      <% end %>
+       </tr>
+      </tbody>
+ </table>
+<% else %>
+ <strong><%= "Book search for \"" + @search + "\"" %></strong>
+ <table class='table'>
+     <thead>
+      <tr>
+       <th></th>
+       <th>title</th>
+       <th>opinion</th>
+      </tr>
+     </thead>
+     <tbody>
+      <% @books.each do |book| %>
+       <tr>
+        <td><%= attachment_image_tag(@user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
+        <td><%= book.title %></td>  　
+        <td><%= book.body %></td>
+        <% end %>
+       </tr>
+      </tbody>
+</table>
+<% end %>
